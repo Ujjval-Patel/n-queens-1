@@ -14,20 +14,90 @@
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n rooks placed such that none of them can attack each other
 
 window.findNRooksSolution = function(n) {
-  var solution = undefined; //fixme
+  var solution = undefined;
+  var board = new Board({'n':n});
+  var numPieces = 0;
+  var recursiveHelper = function(board, row, col){
+    if(!!solution){
+      return;
+    }
+
+    board.togglePiece(row,col);
+    numPieces++;
+
+    if(!board.hasAnyRooksConflicts()){
+      if(numPieces === board.get('n')){
+        solution = board.rows();
+      } else {
+        for(var i = 0; i < board.get('n'); i++){
+          if(!board.get(i)[numPieces]){
+            recursiveHelper(board, i, numPieces);
+          }
+        }
+      }
+    } else {
+      board.togglePiece(row,col);
+      numPieces--;
+    }
+  }
+
+  for(var i = 0; i < board.get('n'); i++){
+    numPieces = 0;
+    recursiveHelper(board, i, 0);
+  }
 
   console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
   return solution;
+
 };
 
 
 
 // return the number of nxn chessboards that exist, with n rooks placed such that none of them can attack each other
 window.countNRooksSolutions = function(n) {
-  var solution = undefined; //fixme
+  // var solutionCount = 0; 
+  // var board = new Board({'n':n});
+  // var numPieces = 0;
+  // var solutions = [];
+  // var recursiveHelper = function(board, row, col){
+  //   board.togglePiece(row,col);
+  //   numPieces++;
+     
+  //   if(!board.hasAnyRooksConflicts()){
+  //     if(numPieces === board.get('n')){
+  //       var temp = JSON.stringify(board.rows());
+  //       if(solutions.indexOf(temp) === -1) {
+  //         solutions.push(temp);
+  //         solutionCount++;
+  //         console.log(solutionCount);
+  //       }
+  //       board.togglePiece(row,col);
+  //       numPieces--;
+  //     } else {
+  //       for(var i = 0; i < board.get('n'); i++){
+  //         for(var j = 0; j < board.get('n'); j++){
+  //           if(!board.get(i)[j]){
+  //             recursiveHelper(board, i, j);
+  //           }
+  //         }
+  //       }
+  //       board.togglePiece(row,col);
+  //       numPieces--;
+  //     }
+  //   } else {
+  //     board.togglePiece(row,col);
+  //     numPieces--;
+  //   }
+  // }
 
-  console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
-  return solutionCount;
+  // for(var i = 0; i < board.get('n'); i++){
+  //   numPieces = 0;
+  //   recursiveHelper(board, i, 0);
+  //   //board.get(i)[j] = 0;
+  // }
+
+  // console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
+  // return solutionCount;
 };
 
 
