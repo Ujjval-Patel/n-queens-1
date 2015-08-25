@@ -201,3 +201,27 @@ window.countNQueensSolutions = function(n) {
   return solutionCount;
 };
 // Time complexity: O(n!)
+
+window.bit_wise_solver = function(n){
+  var count = 0;
+  var finish = Math.pow(2,n) - 1;
+
+  var recursiveHelper = function(ld, cols, rd) {
+    if (cols === finish) {
+      count++;
+      return;
+    }
+
+    var poss = ~(ld | cols | rd);
+
+    while (poss & finish) {
+      var nextSpot = poss & -poss;
+      poss -= nextSpot;
+      recursiveHelper((ld | nextSpot) >> 1, cols | nextSpot, (rd | nextSpot) << 1);
+    }
+  }
+
+  recursiveHelper(0,0,0);
+
+  return count;
+}
