@@ -79,4 +79,17 @@ describe('solvers', function() {
 
   });
 
+  describe('countNQueensSolutions()', function() {
+
+    it('finds the number of valid solutions for n of 1-10 with bit-wise backtrack', function() {
+      _.range(1, 10).map(function(n) {
+        var solutionCount = bit_wise_solver(n);
+        var expectedSolutionCount = [1, 1, 0, 0, 2, 10, 4, 40, 92, 352, 724][n];
+
+        expect(solutionCount).to.be.equal(expectedSolutionCount);
+      });
+    });
+
+  });
+
 });
