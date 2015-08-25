@@ -1,30 +1,18 @@
 var conflictRookCheck = function(array){
-  for(var i = 0; i < array.length; i++){
-    if(array[i] !== undefined){
-      for (var j = i+1; j < array.length; j++) {
-        if (array[j] !== undefined) {
-          if(array[i] === array[j]){
-            return true;
-          }
-        }
-      }
+  for(var i = 0; i < array.length-1; i++){
+    if(array[i] === array[array.length-1]){
+      return true;
     }
   }
   return false;
 }
 
 var conflictQueenCheck = function(array){
-  for(var i = 0; i < array.length; i++){
-    if(array[i] !== undefined){
-      for (var j = i+1; j < array.length; j++) {
-        if (array[j] !== undefined) {
-          if(array[i] === array[j]){
-            return true;
-          } else if(Math.abs(i - j) === Math.abs(array[i] - array[j])){
-            return true;
-          }
-        }
-      }
+  for(var i = 0; i < array.length - 1; i++){
+    if(array[i] === array[array.length-1]){
+      return true;
+    } else if(Math.abs(i - (array.length-1)) === Math.abs(array[i] - array[array.length-1])){
+      return true;
     }
   }
   return false;
