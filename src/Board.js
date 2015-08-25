@@ -106,7 +106,9 @@
       return false; 
     },
 
-
+    // Time complexity
+    // hasRowConflictAt:   O(n)
+    // hasAnyRowConflicts: O(n^2)
 
     // COLUMNS - run from top to bottom
     // --------------------------------------------------------------
@@ -140,6 +142,9 @@
       return false; 
     },
 
+    // Time complexity
+    // hasColConflictAt:   O(n)
+    // hasAnyColConflicts: O(n^2)
 
 
     // Major Diagonals - go from top-left to bottom-right
@@ -182,6 +187,9 @@
       return false;
     },
 
+    // Time complexity
+    // hasMajorDiagonalConflicAt:    O(n)
+    // hasAnyMajorDiagonalConflicts: O(n^2)
 
 
     // Minor Diagonals - go from top-right to bottom-left
@@ -223,6 +231,11 @@
       }
       return false;
     }
+
+    // Time complexity
+    // hasMinorDiagonalConflicAt:    O(n)
+    // hasAnyMinorDiagonalConflicts: O(n^2)
+
 
     /*--------------------  End of Helper Functions  ---------------------*/
 

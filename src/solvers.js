@@ -35,8 +35,6 @@ window.findNRooksSolution = function(n) {
             recursiveHelper(board, i, numPieces);
           }
         }
-        //board.togglePiece(row,col);
-        //numPieces--;
       }
     } else {
       board.togglePiece(row,col);
@@ -54,7 +52,7 @@ window.findNRooksSolution = function(n) {
   return solution;
 
 };
-
+// Time complexity: O(n!)
 
 
 // return the number of nxn chessboards that exist, with n rooks placed such that none of them can attack each other
@@ -99,7 +97,7 @@ window.countNRooksSolutions = function(n) {
   console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
   return solutionCount;
 };
-
+// Time complexity: O(n!)
 
 
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n queens placed such that none of them can attack each other
@@ -144,7 +142,6 @@ window.findNQueensSolution = function(n) {
 
   for(var i = 0; i < board.get('n'); i++){
     numPieces = 0;
-    //board = new Board({'n':n});
     recursiveHelper(board, i, 0);
   }
   if(!solution){
@@ -154,6 +151,7 @@ window.findNQueensSolution = function(n) {
   console.log('Single solution for ' + n + ' queens:', JSON.stringify(solution));
   return solution;
 };
+// Time complexity: O(n!)
 
 
 // return the number of nxn chessboards that exist, with n queens placed such that none of them can attack each other
@@ -202,3 +200,4 @@ window.countNQueensSolutions = function(n) {
   console.log('Number of solutions for ' + n + ' queens:', solutionCount);
   return solutionCount;
 };
+// Time complexity: O(n!)
